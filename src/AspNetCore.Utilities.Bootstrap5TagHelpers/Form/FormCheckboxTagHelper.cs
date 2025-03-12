@@ -20,7 +20,7 @@ public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
     /// <summary>
     /// The CSS class that should be applied to the containing div, in addition to that of the form-check that is required
     /// </summary>
-    public string ContainerClass { get; set; } = "mb-3";
+    public string ContainerClass { get; set; } = "";
 
     /// <summary>
     /// Indicator if the input should be rendered as disabled

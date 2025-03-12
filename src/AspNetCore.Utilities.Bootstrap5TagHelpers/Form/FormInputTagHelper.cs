@@ -18,12 +18,12 @@ public class FormInputTagHelper : InputTagHelper, IFormElementMixin
     /// <summary>
     ///     What size of input should this be
     /// </summary>
-    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Standard;
+    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Sm;
 
     /// <summary>
     /// The CSS class that should be applied to the containing div
     /// </summary>
-    public string ContainerClass { get; set; } = "mb-3";
+    public string ContainerClass { get; set; } = "";
 
     /// <summary>
     /// Indicator if the input should be rendered as plain-text/readonly

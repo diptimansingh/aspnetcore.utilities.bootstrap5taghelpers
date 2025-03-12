@@ -30,12 +30,12 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
     /// <summary>
     /// The class to be applied to the container
     /// </summary>
-    public string ContainerClass { get; set; } = "mb-3";
+    public string ContainerClass { get; set; } = "";
     
     /// <summary>
     ///     What size of input should this be
     /// </summary>
-    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Standard;
+    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Sm;
 
     /// <summary>
     ///     Used to actually process the tag helper
@@ -50,12 +50,12 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
         //Set our tag name
         output.TagName = "select";
 
-        //Add the form-control class
-        output.AddClass("form-control", HtmlEncoder.Default);
+        //Add the form-select class
+        output.AddClass("form-select", HtmlEncoder.Default);
 
         if (InputSize != BootstrapFormControlSize.Standard)
         {
-            output.AddClass($"form-control-{InputSize.ToString().ToLower()}", HtmlEncoder.Default);
+            output.AddClass($"form-select-{InputSize.ToString().ToLower()}", HtmlEncoder.Default);
         }
 
         //Add before div

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers;
 
+#nullable enable
 /// <summary>
 ///     Tag helper for generating Bootstrap alerts
 /// </summary>
