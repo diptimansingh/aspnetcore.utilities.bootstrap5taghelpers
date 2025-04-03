@@ -11,7 +11,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form;
 ///     TagHelper for rending Bootstrap form compliant checkbox controls with support for ASP.NET Core model Binding.  Will
 ///     include Label, Field, and validation.
 /// </summary>
-[RestrictChildren("form-checkbox")]
+[RestrictChildren("form-check")]
 public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
 {
     /// <inheritdoc />
