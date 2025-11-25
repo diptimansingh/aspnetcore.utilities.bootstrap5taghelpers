@@ -57,6 +57,7 @@ public class FormInputTagHelper : InputTagHelper, IFormElementMixin
         {
             output.AddClass("form-control-plaintext", HtmlEncoder.Default);
             output.Attributes.Add("readonly", "readonly");
+            //output.Attributes.Add("disabled", "disabled");
         }
         else
         {
