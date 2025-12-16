@@ -38,6 +38,8 @@ public class ModalToggleTagHelper : TagHelper
         output.AddClass($"btn-{ToggleColor.ToString().ToLower()}", HtmlEncoder.Default);
 
         if (TagName == "button")
+        {
             output.Attributes.Add("type", "button");
+        }
     }
 }

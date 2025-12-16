@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form;
 
@@ -12,7 +11,7 @@ internal interface IFormElementMixin
     ModelExpression For { get; }
 
     /// <summary>
-    /// The Html Generator used to render this tag helper
+    ///     The Html Generator used to render this tag helper
     /// </summary>
     IHtmlGenerator HtmlGenerator { get; }
 }
@@ -34,7 +33,8 @@ internal static class FormElementMixinExtensions
     public static void EndFormGroup(this IFormElementMixin element, TagHelperOutput output)
         => output.PostElement.AppendHtml("</div>");
 
-    public static void AddLabel(this IFormElementMixin element, TagHelperOutput output, string cssClass = "form-label", bool isPostElement = false)
+    public static void AddLabel(this IFormElementMixin element, TagHelperOutput output, string cssClass = "form-label",
+        bool isPostElement = false)
     {
         //Find out if required to add special class
         var isRequired = element.For.ModelExplorer.Metadata.ValidatorMetadata.Any(o => o is RequiredAttribute);
@@ -46,9 +46,13 @@ internal static class FormElementMixinExtensions
             element.For.Name, null,
             new { @class = targetClass });
         if (isPostElement)
+        {
             output.PostElement.AppendHtml(label);
+        }
         else
+        {
             output.PreElement.AppendHtml(label);
+        }
     }
 
 

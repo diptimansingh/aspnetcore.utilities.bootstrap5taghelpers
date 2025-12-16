@@ -34,12 +34,12 @@ public class SpinnerTagHelper : TagHelper
     /// <summary>
     ///     The size of the spinner
     /// </summary>
-    public bool IsSmall { get; set; } = false;
+    public bool IsSmall { get; set; }
 
     /// <summary>
     ///     If set to true the element will render with an aria-hidden attribute with a value of true
     /// </summary>
-    public bool AriaHidden { get; set; } = false;
+    public bool AriaHidden { get; set; }
 
     /// <summary>
     ///     If set will render the spinner with a color

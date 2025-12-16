@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Modal;
 
@@ -20,7 +18,7 @@ public class ModalHeaderTagHelper : TagHelper
     public string Title { get; set; }
 
     /// <summary>
-    /// The title tag to be utilized
+    ///     The title tag to be utilized
     /// </summary>
     public string TitleTag { get; set; } = "h2";
 
@@ -36,7 +34,9 @@ public class ModalHeaderTagHelper : TagHelper
         //Get the context information
         var modalContext = context.Items[typeof(ModalContext)] as ModalContext;
         if (modalContext == null)
+        {
             throw new ArgumentException("ModalContext not present");
+        }
 
         return ProcessAsyncInternal(output, modalContext);
     }
@@ -52,8 +52,11 @@ public class ModalHeaderTagHelper : TagHelper
         {
             var titleTag = new TagBuilder(TitleTag);
             titleTag.Attributes.Add("class", "modal-title fs-5");
-            if(!string.IsNullOrEmpty(modalContext.Id))
+            if (!string.IsNullOrEmpty(modalContext.Id))
+            {
                 titleTag.Attributes.Add("id", $"{modalContext.Id}Label");
+            }
+
             titleTag.InnerHtml.Append(Title);
             output.Content.AppendHtml(titleTag);
         }

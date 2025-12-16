@@ -6,15 +6,12 @@ using System.Text.Encodings.Web;
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form;
 
 /// <summary>
-/// Custom implementation of the select tag helper
+///     Custom implementation of the select tag helper
 /// </summary>
 public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
 {
-    /// <inheritdoc />
-    public IHtmlGenerator HtmlGenerator { get; }
-
     /// <summary>
-    /// Default constructor
+    ///     Default constructor
     /// </summary>
     /// <param name="generator">Html Generator for field generation</param>
     public FormSelectTagHelper(IHtmlGenerator generator) : base(generator)
@@ -23,19 +20,22 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
     }
 
     /// <summary>
-    /// Allows the addition of a note to the field
+    ///     Allows the addition of a note to the field
     /// </summary>
     public string Note { get; set; }
 
     /// <summary>
-    /// The class to be applied to the container
+    ///     The class to be applied to the container
     /// </summary>
     public string ContainerClass { get; set; } = "";
-    
+
     /// <summary>
     ///     What size of input should this be
     /// </summary>
     public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Sm;
+
+    /// <inheritdoc />
+    public IHtmlGenerator HtmlGenerator { get; }
 
     /// <summary>
     ///     Used to actually process the tag helper
@@ -68,7 +68,9 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
         this.AddValidationMessage(output);
 
         if (!string.IsNullOrEmpty(Note))
+        {
             output.PostElement.AppendHtml($"<span class=\"form-text\">{Note}</small>");
+        }
 
         this.EndFormGroup(output);
     }

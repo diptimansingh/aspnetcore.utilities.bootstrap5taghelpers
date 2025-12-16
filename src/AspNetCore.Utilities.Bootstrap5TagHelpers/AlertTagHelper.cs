@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers;
 
@@ -25,7 +24,7 @@ public class AlertTagHelper : TagHelper
     /// <summary>
     ///     Is this an alert that is dismissible
     /// </summary>
-    public bool Dismissible { get; set; } = false;
+    public bool Dismissible { get; set; }
 
     /// <summary>
     ///     If supplied this will render as a heading inside the alert.

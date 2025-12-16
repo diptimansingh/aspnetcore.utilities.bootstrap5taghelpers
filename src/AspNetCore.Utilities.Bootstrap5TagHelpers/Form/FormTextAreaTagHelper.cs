@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
 {
@@ -15,22 +14,22 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
     [RestrictChildren("form-note")]
     public class FormTextAreaTagHelper : TextAreaTagHelper, IFormElementMixin
     {
-        /// <inheritdoc />
-        public IHtmlGenerator HtmlGenerator { get; }
-
         /// <summary>
-        /// The css class to be applied to the wrapping container
-        /// </summary>
-        public string ContainerClass { get; set; } = "mb-3";
-
-        /// <summary>
-        /// Default constructor
+        ///     Default constructor
         /// </summary>
         /// <param name="generator">Html Generator for field generation</param>
         public FormTextAreaTagHelper(IHtmlGenerator generator) : base(generator)
         {
             HtmlGenerator = generator;
         }
+
+        /// <summary>
+        ///     The css class to be applied to the wrapping container
+        /// </summary>
+        public string ContainerClass { get; set; } = "mb-3";
+
+        /// <inheritdoc />
+        public IHtmlGenerator HtmlGenerator { get; }
 
         /// <summary>
         ///     Used to actually process the tag helper
@@ -62,7 +61,9 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
 
             //Add child content if we have it
             if (!childContent.IsEmptyOrWhiteSpace)
+            {
                 output.PostElement.AppendHtml(childContent);
+            }
 
             //Close wrapping div
             this.EndFormGroup(output);

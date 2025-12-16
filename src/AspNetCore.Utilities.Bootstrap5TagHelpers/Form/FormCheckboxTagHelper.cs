@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.VisualBasic;
-using System;
 using System.Text.Encodings.Web;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form;
@@ -14,25 +12,6 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form;
 [RestrictChildren("form-check")]
 public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
 {
-    /// <inheritdoc />
-    public IHtmlGenerator HtmlGenerator { get; }
-
-    /// <summary>
-    /// The CSS class that should be applied to the containing div, in addition to that of the form-check that is required
-    /// </summary>
-    public string ContainerClass { get; set; } = "";
-
-    /// <summary>
-    /// Indicator if the input should be rendered as disabled
-    /// </summary>
-    public bool Disabled { get; set; } = false;
-
-    /// <summary>
-    /// Controls if this should be rendered as a switch
-    /// </summary>
-    public bool IsSwitch { get; set; } = false;
-
-
     /// <summary>
     ///     Public constructor that will receive the incoming generator to leverage existing Microsoft Tag Helpers
     /// </summary>
@@ -43,6 +22,24 @@ public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
     }
 
     /// <summary>
+    ///     The CSS class that should be applied to the containing div, in addition to that of the form-check that is required
+    /// </summary>
+    public string ContainerClass { get; set; } = "";
+
+    /// <summary>
+    ///     Indicator if the input should be rendered as disabled
+    /// </summary>
+    public bool Disabled { get; set; }
+
+    /// <summary>
+    ///     Controls if this should be rendered as a switch
+    /// </summary>
+    public bool IsSwitch { get; set; }
+
+    /// <inheritdoc />
+    public IHtmlGenerator HtmlGenerator { get; }
+
+    /// <summary>
     ///     Used to actually process the tag helper
     /// </summary>
     /// <param name="context"></param>
@@ -51,7 +48,7 @@ public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
     {
         //Call our base implementation
         base.Process(context, output);
-        
+
         //Set our tag name
         output.TagName = "input";
 
@@ -60,7 +57,7 @@ public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
         {
             output.Attributes.Add("disabled", "");
         }
-        
+
         output.AddClass("form-check-input", HtmlEncoder.Default);
 
         //Add before div
@@ -70,11 +67,12 @@ public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
             groupClass += " form-switch";
             output.Attributes.Add("role", "switch");
         }
+
         this.StartFormGroup(output, groupClass);
-        
+
         //Generate our label if not inline
         this.AddLabel(output, "form-check-label");
-        
+
         //Now, add validation message AFTER the field if it is not disabled
         if (!Disabled)
         {

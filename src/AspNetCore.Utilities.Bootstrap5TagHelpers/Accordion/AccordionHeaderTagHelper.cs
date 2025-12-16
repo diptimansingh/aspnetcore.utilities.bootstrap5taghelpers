@@ -3,18 +3,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Accordion;
 
 /// <summary>
-/// Tag helper for individual items
+///     Tag helper for individual items
 /// </summary>
 [HtmlTargetElement("accordion-header", ParentTag = "accordion-item")]
 public class AccordionHeaderTagHelper : TagHelper
 {
     /// <summary>
-    /// Processes the tag helper
+    ///     Processes the tag helper
     /// </summary>
     /// <param name="context"></param>
     /// <param name="output"></param>
@@ -27,10 +26,10 @@ public class AccordionHeaderTagHelper : TagHelper
 
         //Set as a Div
         output.TagName = "h2";
-        
+
         //Add default class
         output.AddClass("accordion-header", HtmlEncoder.Default);
-        
+
         //Build wrapping button
         var wrappingButton = new TagBuilder("button");
         wrappingButton.AddCssClass("accordion-button");
@@ -45,7 +44,7 @@ public class AccordionHeaderTagHelper : TagHelper
         {
             wrappingButton.AddCssClass("collapsed");
         }
-        
+
         //Get the child content
         var content = (await output.GetChildContentAsync()).GetContent();
         wrappingButton.InnerHtml.AppendHtml(content);

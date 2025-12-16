@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers;
 #nullable enable
@@ -87,7 +85,7 @@ public class ButtonTagHelper : TagHelper
     public bool Disabled { get; set; }
 
     /// <summary>
-    /// If a value is provided this 
+    ///     If a value is provided this
     /// </summary>
     public string? Dismisses { get; set; }
 
@@ -108,10 +106,15 @@ public class ButtonTagHelper : TagHelper
         output.TagName = "button";
         output.Attributes.Add("type", Type.ToString().ToLowerInvariant());
         output.AddClass("btn", HtmlEncoder.Default);
-        if(IsOutline)
+        if (IsOutline)
+        {
             output.AddClass($"btn-outline-{Color.ToString().ToLowerInvariant()}", HtmlEncoder.Default);
+        }
         else
+        {
             output.AddClass($"btn-{Color.ToString().ToLowerInvariant()}", HtmlEncoder.Default);
+        }
+
         output.Attributes.Add("role", "button");
 
         if (!string.IsNullOrEmpty(Value))

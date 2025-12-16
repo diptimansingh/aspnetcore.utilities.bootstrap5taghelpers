@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Modal;
 
@@ -35,36 +34,42 @@ public enum ModalSize
 }
 
 /// <summary>
-/// A collection of options for setting the full-screen mode of a modal
+///     A collection of options for setting the full-screen mode of a modal
 /// </summary>
 public enum ModalFullscreenMode
 {
     /// <summary>
-    /// The default behavior, it will NEVER be full screen
+    ///     The default behavior, it will NEVER be full screen
     /// </summary>
     Never = 0,
+
     /// <summary>
-    /// The dialog will ALWAYS be full scree
+    ///     The dialog will ALWAYS be full scree
     /// </summary>
     Always = 1,
+
     /// <summary>
-    /// The dialog will only be full screen below the small breakpoint
+    ///     The dialog will only be full screen below the small breakpoint
     /// </summary>
     BelowSmall = 2,
+
     /// <summary>
-    /// The dialog will only be full screen below the medium breakpoint
+    ///     The dialog will only be full screen below the medium breakpoint
     /// </summary>
     BelowMedium = 3,
+
     /// <summary>
-    /// The dialog will only be full screen below the large breakpoint
+    ///     The dialog will only be full screen below the large breakpoint
     /// </summary>
     BelowLarge = 4,
+
     /// <summary>
-    /// The dialog will only be full screen below the extra large breakpoint
+    ///     The dialog will only be full screen below the extra large breakpoint
     /// </summary>
     BelowXLarge = 5,
+
     /// <summary>
-    /// The dialog will only be full screen below the extra extra large breakpoint
+    ///     The dialog will only be full screen below the extra extra large breakpoint
     /// </summary>
     BelowXXLarge = 6
 }
@@ -121,7 +126,6 @@ public static class ModalEnumExtensions
     }
 }
 
-
 /// <summary>
 ///     A high-level wrapper Tag Helper for rendering a bootstrap Modal
 /// </summary>
@@ -134,24 +138,24 @@ public class ModalTagHelper : TagHelper
     public ModalSize Size { get; set; } = ModalSize.Default;
 
     /// <summary>
-    ///     Determines the optional full screen mode of the dialog. 
+    ///     Determines the optional full screen mode of the dialog.
     /// </summary>
     public ModalFullscreenMode FullscreenMode { get; set; } = ModalFullscreenMode.Never;
 
     /// <summary>
     ///     If set to true the background will not be clickable to dismiss the dialog
     /// </summary>
-    public bool StaticBackdrop { get; set; } = false;
+    public bool StaticBackdrop { get; set; }
 
     /// <summary>
     ///     If set to true the modal will have the added class of modal-dialog-centered
     /// </summary>
-    public bool VerticallyCentered { get; set; } = false;
+    public bool VerticallyCentered { get; set; }
 
     /// <summary>
     ///     If set to true the modal will have the added class of modal-dialog-scrollable
     /// </summary>
-    public bool Scrollable { get; set; } = false;
+    public bool Scrollable { get; set; }
 
     /// <summary>
     ///     Ensure that if we have a context item that we reset.  This is needed when you have multiple tag helpers on the same
@@ -232,6 +236,7 @@ public class ModalTagHelper : TagHelper
         {
             dialogWrapper.AddCssClass(fullscreenClass);
         }
+
         var dialogContent = new TagBuilder("div");
         dialogContent.AddCssClass("modal-content");
         dialogContent.InnerHtml.AppendHtml(body);

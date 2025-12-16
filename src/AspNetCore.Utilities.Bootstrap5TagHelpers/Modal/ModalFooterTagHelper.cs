@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Modal;
 
 /// <summary>
-/// Tag helper for rendering the footer of a modal dialog
+///     Tag helper for rendering the footer of a modal dialog
 /// </summary>
 [HtmlTargetElement("modal-footer", ParentTag = "modal")]
 public class ModalFooterTagHelper : TagHelper

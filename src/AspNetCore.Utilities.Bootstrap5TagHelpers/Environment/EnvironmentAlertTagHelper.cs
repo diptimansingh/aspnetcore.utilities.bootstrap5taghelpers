@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
+﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Environment;
@@ -33,7 +32,9 @@ public class EnvironmentAlertTagHelper : EnvironmentTagHelper
 
         //If nothing rendered don't wrap
         if (output.IsContentModified)
+        {
             return;
+        }
 
         output.PreContent.AppendHtml($"<div class=\"alert alert-{AlertColor.ToString().ToLower()}\">");
         output.PostContent.AppendHtml("</div");

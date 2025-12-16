@@ -12,24 +12,6 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form;
 [RestrictChildren("form-note")]
 public class FormInputTagHelper : InputTagHelper, IFormElementMixin
 {
-    /// <inheritdoc />
-    public IHtmlGenerator HtmlGenerator { get; }
-
-    /// <summary>
-    ///     What size of input should this be
-    /// </summary>
-    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Sm;
-
-    /// <summary>
-    /// The CSS class that should be applied to the containing div
-    /// </summary>
-    public string ContainerClass { get; set; } = "";
-
-    /// <summary>
-    /// Indicator if the input should be rendered as plain-text/readonly
-    /// </summary>
-    public bool PlainTextReadOnly { get; set; } = false;
-
     /// <summary>
     ///     Public constructor that will receive the incoming generator to leverage existing Microsoft Tag Helpers
     /// </summary>
@@ -38,6 +20,24 @@ public class FormInputTagHelper : InputTagHelper, IFormElementMixin
     {
         HtmlGenerator = generator;
     }
+
+    /// <summary>
+    ///     What size of input should this be
+    /// </summary>
+    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Sm;
+
+    /// <summary>
+    ///     The CSS class that should be applied to the containing div
+    /// </summary>
+    public string ContainerClass { get; set; } = "";
+
+    /// <summary>
+    ///     Indicator if the input should be rendered as plain-text/readonly
+    /// </summary>
+    public bool PlainTextReadOnly { get; set; }
+
+    /// <inheritdoc />
+    public IHtmlGenerator HtmlGenerator { get; }
 
     /// <summary>
     ///     Used to actually process the tag helper
@@ -76,8 +76,10 @@ public class FormInputTagHelper : InputTagHelper, IFormElementMixin
         this.AddLabel(output);
 
         //Now, add validation message AFTER the field if it is not plain text
-        if(!PlainTextReadOnly)
+        if (!PlainTextReadOnly)
+        {
             this.AddValidationMessage(output);
+        }
 
         //Close wrapping div
         this.EndFormGroup(output);

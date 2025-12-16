@@ -2,28 +2,27 @@
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Accordion;
 
 /// <summary>
-/// A tag helper for rendering a bootstrap card to a view
+///     A tag helper for rendering a bootstrap card to a view
 /// </summary>
 [RestrictChildren("accordion-item")]
 public class AccordionTagHelper : TagHelper
 {
     /// <summary>
-    /// Should this render as a Flush accordion
+    ///     Should this render as a Flush accordion
     /// </summary>
-    public bool IsFlush { get; set; } = false;
+    public bool IsFlush { get; set; }
 
     /// <summary>
-    /// If set to true child items can be opened/closed at any time
+    ///     If set to true child items can be opened/closed at any time
     /// </summary>
-    public bool AlwaysOpen { get; set; } = false;
+    public bool AlwaysOpen { get; set; }
 
     /// <summary>
-    /// Processes the tag helper
+    ///     Processes the tag helper
     /// </summary>
     /// <param name="context"></param>
     /// <param name="output"></param>
@@ -37,10 +36,12 @@ public class AccordionTagHelper : TagHelper
         output.AddClass("accordion", HtmlEncoder.Default);
 
         if (IsFlush)
+        {
             output.AddClass("accordion-flush", HtmlEncoder.Default);
+        }
 
         // setup content
-        var accordionContext = new AccordionContext() {Id = id, AlwaysOpen = AlwaysOpen};
+        var accordionContext = new AccordionContext { Id = id, AlwaysOpen = AlwaysOpen };
         context.Items[typeof(AccordionContext)] = accordionContext;
 
         var content = (await output.GetChildContentAsync()).GetContent();

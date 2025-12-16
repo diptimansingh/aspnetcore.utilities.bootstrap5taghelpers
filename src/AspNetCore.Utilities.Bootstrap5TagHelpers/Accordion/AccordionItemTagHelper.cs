@@ -1,25 +1,23 @@
 ﻿using ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Contexts;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Accordion;
 
 /// <summary>
-/// Tag helper for individual items
+///     Tag helper for individual items
 /// </summary>
 [HtmlTargetElement("accordion-item", ParentTag = "accordion")]
 public class AccordionItemTagHelper : TagHelper
 {
     /// <summary>
-    /// Should this be rendered as expanded
+    ///     Should this be rendered as expanded
     /// </summary>
     public bool Expanded { get; set; }
 
     /// <summary>
-    /// Processes the tag helper
+    ///     Processes the tag helper
     /// </summary>
     /// <param name="context"></param>
     /// <param name="output"></param>
@@ -47,7 +45,7 @@ public class AccordionItemTagHelper : TagHelper
 
 
         // setup content
-        var itemContext = new AccordionItemContext() { ItemId = id, Expanded = Expanded };
+        var itemContext = new AccordionItemContext { ItemId = id, Expanded = Expanded };
         context.Items[typeof(AccordionItemContext)] = itemContext;
 
         var content = (await output.GetChildContentAsync()).GetContent();

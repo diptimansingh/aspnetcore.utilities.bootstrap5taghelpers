@@ -42,7 +42,9 @@ public class BadgeTagHelper : TagHelper
         output.TagName = "span";
         output.AddClass("badge", HtmlEncoder.Default);
         output.AddClass($"text-bg-{BadgeColor.ToString().ToLower()}", HtmlEncoder.Default);
-        if(DisplayAsPill)
+        if (DisplayAsPill)
+        {
             output.AddClass("rounded-pill", HtmlEncoder.Default);
+        }
     }
 }

@@ -2,18 +2,17 @@
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Card;
 
 /// <summary>
-/// A tag helper for rendering a bootstrap card to a view
+///     A tag helper for rendering a bootstrap card to a view
 /// </summary>
 [RestrictChildren("card-header", "card-body", "card-footer")]
 public class CardTagHelper : TagHelper
 {
     /// <summary>
-    /// Processes the tag helper
+    ///     Processes the tag helper
     /// </summary>
     /// <param name="context"></param>
     /// <param name="output"></param>
@@ -27,7 +26,7 @@ public class CardTagHelper : TagHelper
         output.AddClass("card", HtmlEncoder.Default);
 
         // setup content
-        var cardContext = new CardContext {Id = id};
+        var cardContext = new CardContext { Id = id };
         context.Items[typeof(CardContext)] = cardContext;
 
         var content = (await output.GetChildContentAsync()).GetContent();

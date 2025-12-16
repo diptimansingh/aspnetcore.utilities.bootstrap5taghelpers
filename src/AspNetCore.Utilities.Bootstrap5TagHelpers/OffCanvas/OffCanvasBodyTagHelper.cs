@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.OffCanvas;
 
 /// <summary>
-/// Tag helper for rendering the 
+///     Tag helper for rendering the
 /// </summary>
 [HtmlTargetElement("offcanvas-body", ParentTag = "offcanvas")]
 public class OffCanvasBodyTagHelper : TagHelper

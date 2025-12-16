@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using System;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.OffCanvas;
 
@@ -21,7 +19,7 @@ public class OffCanvasHeaderTagHelper : TagHelper
     public string Title { get; set; }
 
     /// <summary>
-    /// The title tag to be utilized
+    ///     The title tag to be utilized
     /// </summary>
     public string TitleTag { get; set; } = "h5";
 
@@ -37,7 +35,9 @@ public class OffCanvasHeaderTagHelper : TagHelper
         //Get the context information
         var offCanvasContext = context.Items[typeof(OffCanvasContext)] as OffCanvasContext;
         if (offCanvasContext == null)
+        {
             throw new ArgumentException("OffCanvasContext not present");
+        }
 
         return ProcessAsyncInternal(output, offCanvasContext);
     }
@@ -54,7 +54,10 @@ public class OffCanvasHeaderTagHelper : TagHelper
             var titleTag = new TagBuilder(TitleTag);
             titleTag.Attributes.Add("class", "offcanvas-title");
             if (!string.IsNullOrEmpty(context.Id))
+            {
                 titleTag.Attributes.Add("id", $"{context.Id}Label");
+            }
+
             titleTag.InnerHtml.Append(Title);
             output.Content.AppendHtml(titleTag);
         }
